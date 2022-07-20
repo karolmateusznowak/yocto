@@ -1,5 +1,6 @@
 # yocto
 
+git submodule update --init
 
 export TEMPLATECONF=$PWD/meta-demo/conf
 

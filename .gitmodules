@@ -1,7 +1,0 @@
-[submodule "upstream/poky"]
-	path = upstream/poky
-	url = git://git.yoctoproject.org/poky
-[submodule "upstream/meta-openembedded"]
-	path = upstream/meta-openembedded
-	url = git://git.openembedded.org/meta-openembedded
-

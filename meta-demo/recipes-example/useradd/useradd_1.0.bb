@@ -17,18 +17,17 @@ S = "${WORKDIR}"
 inherit useradd
 
 # echo -n knw | mkpasswd -m sha512crypt -s | sed -e 's,\$,\\$,g'
-KNW_USER_NAME = "knw"
-KNW_USER_GROUP = "knw"
-KNW_USER_PASSWORD = "\$6\$AgSux3MUxIAxRpyc\$JQMUaAPwbuVnaJM/c6gjw9IeVuJpsTMr6hRochzLKi/Fb.Op3PUJouggeraRLH/uuOQJjeUeVtQKqrJ2fcOyR0"
-KNW_USER_HOME_DIR = "/home/${KNW_USER_NAME}"
+USER_NAME = "knw"
+USER_GROUP = "knw"
+USER_PASSWORD = "\$6\$AgSux3MUxIAxRpyc\$JQMUaAPwbuVnaJM/c6gjw9IeVuJpsTMr6hRochzLKi/Fb.Op3PUJouggeraRLH/uuOQJjeUeVtQKqrJ2fcOyR0"
+USER_HOME_DIR = "/home/${USER_NAME}"
 
 USERADD_PACKAGES = "${PN}"
-GROUPADD_PARAM:${PN} = "--system ${KNW_USER_GROUP}"
-USERADD_PARAM:${PN} = "--system -g ${KNW_USER_GROUP} --password '${KNW_USER_PASSWORD}' --shell /bin/bash --home-dir ${KNW_USER_HOME_DIR} ${KNW_USER_NAME}"
+GROUPADD_PARAM:${PN} = "--system ${USER_GROUP}"
+USERADD_PARAM:${PN} = "--system -g ${USER_GROUP} --password '${USER_PASSWORD}' --shell /bin/bash --home-dir ${USER_HOME_DIR} ${USER_NAME}"
 
 do_install () {
-    mkdir -p ${D}${KNW_USER_HOME_DIR}
-    chown -R ${KNW_USER_NAME}:${KNW_USER_GROUP} ${D}${KNW_USER_HOME_DIR}
+    install -d -o ${USER_NAME} -g ${USER_GROUP} ${D}${USER_HOME_DIR}
 }
 
-FILES:${PN} = "${KNW_USER_HOME_DIR}"
+FILES:${PN} = "${USER_HOME_DIR}"

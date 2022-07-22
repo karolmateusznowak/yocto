@@ -23,7 +23,8 @@ QB_MEM = "-m 2G"
 IMAGE_INSTALL:append = "\
     bash \
     sudo \
-    example \
+    useradd \
+    extrafiles \
 "
 
 # echo -n toor | mkpasswd -m sha512crypt -s | sed -e 's,\$,\\$,g'
